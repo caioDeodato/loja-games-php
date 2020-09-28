@@ -22,16 +22,18 @@
             $compras = $controller->listarTodas($usuario->id);
             $jogosObtidos[] = new Game();
 
-            for($i = 0; $i < count($jogos); $i++) {
-                for ($j=0; $j < count($compras); $j++) { 
-                    if($jogos[$i]->id == $compras[$j]->id_game && $jogos[$i]->id != null) {
-                        array_push($jogosObtidos, $jogos[$i]);
-                        if(count($jogosObtidos) == count($compras) - 1){
-                            break;
-                        }
-                    }
-                }
-            }
+            // for($i = 0; $i < count($jogos) - 1; $i++) {
+            //     for ($j=0; $j < count($compras) - 1; $j++) { 
+            //         if($jogos[$i]->id == $compras[$j]->id_game && $jogos[$i]->id != null) {
+            //             array_push($jogosObtidos, $jogos[$i]);
+
+            //         }
+            //         if(count($jogosObtidos) == count($compras) - 1){
+            //             break;
+            //         }
+            //     }
+            // }
+            $jogosObtidos = $controller->listarGamesComprados($usuario->id);
         }
     ?>
     <title><?php echo "Perfil: ". $usuario->nome ?></title>

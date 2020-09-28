@@ -88,7 +88,9 @@
         <div class="lista" style="display: flex; flex-wrap: wrap; justify-content: center;">
             <?php 
                 $lista = $controller->listarTodos();
-                $_SESSION['lista'] = serialize($lista);
+                if(!isset($_SESSION['lista'])){
+                    $_SESSION['lista'] = serialize($lista);
+                }
                 foreach ($lista as $game):
                     if(!$game->id == null):
             ?>
@@ -97,6 +99,7 @@
                         <h5 class="card-title"><?php echo $game->nome ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo ucfirst($game->categoria) . "   /   $game->plataforma"; ?></h6>
                         <p class="card-text" style=""><?php echo $game->descricao; ?></p>
+                        <h6 class="card-subtitle mb-2 text-muted" style="margin-bottom: 10px;"><?php echo "Preço: R$:". str_replace('.', ',', $game->preco); ?></h6>
                         <?php 
                             // Deixando botão azul para jogos de PS4 e verde para XONE
                             if(strcasecmp($game->plataforma, "xbox one")){

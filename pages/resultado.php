@@ -22,7 +22,7 @@
     <nav class="navbar navbar-light bg-dark" style="display: flex; border-radius: 0px 0 10px 10px;">
         <a class="navbar-brand text-white" href="./index.php">GameStore</a>
         <div class="canto" style="display: flex">
-            <a class="nav-link text-white" href="./login.php"><?php echo $usuario->nome; ?></a>
+            <a class="nav-link text-white" href="./perfil.php"><?php echo $usuario->nome; ?></a>
             <a class="nav-link text-danger" style="color: red;" href="../controller/logoff.php">Sair</a>
         </div>
     </nav>

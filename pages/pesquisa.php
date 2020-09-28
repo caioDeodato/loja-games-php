@@ -30,7 +30,7 @@
     <nav class="navbar navbar-light bg-dark" style="display: flex; border-radius: 0px 0 10px 10px;">
         <a class="navbar-brand text-white" href="./index.php">GameStore</a>
         <div class="canto" style="display: flex">
-            <a class="nav-link text-white" href="./login.php"><?php echo $usuario->nome; ?></a>
+            <a class="nav-link text-white" href="./perfil.php"><?php echo $usuario->nome; ?></a>
             <a class="nav-link text-danger" style="color: red;" href="../controller/logoff.php">Sair</a>
         </div>
     </nav>
@@ -187,6 +187,7 @@
                         <h5 class="card-title"><?php echo $game->nome ?></h5>
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo ucfirst($game->categoria) . "   /   $game->plataforma"; ?></h6>
                         <p class="card-text" style=""><?php echo $game->descricao; ?></p>
+                        <h6 class="card-subtitle mb-2 text-muted" style="margin-bottom: 10px;"><?php echo "Preço: R$:". str_replace('.', ',', $game->preco); ?></h6>
                         <?php 
                             // Deixando botão azul para jogos de PS4 e verde para XONE
                             if(strcasecmp($game->plataforma, "xbox one")){

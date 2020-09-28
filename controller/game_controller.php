@@ -12,14 +12,14 @@
 
             try {
 
-                $sql = "SELECT * FROM `games` ORDER BY nome";
+                $sql = "SELECT * FROM `games` ORDER BY nome_game";
                 $statement = $pdo->query($sql);
 
                 while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
 
                     $game = new Game();
-                    $game->id = $row['id'];
-                    $game->nome = $row['nome'];
+                    $game->id = $row['id_game'];
+                    $game->nome = $row['nome_game'];
                     $game->categoria = $row['categoria'];
                     $game->preco = $row['preco'];
                     $game->descricao = $row['descricao'];
@@ -52,8 +52,8 @@
                 while($row = $statement->fetch(PDO::FETCH_ASSOC)) {
 
                     $game = new Game();
-                    $game->id = $row['id'];
-                    $game->nome = $row['nome'];
+                    $game->id = $row['id_game'];
+                    $game->nome = $row['nome_game'];
                     $game->categoria = $row['categoria'];
                     $game->preco = $row['preco'];
                     $game->descricao = $row['descricao'];
