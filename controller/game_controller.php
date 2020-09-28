@@ -46,7 +46,7 @@
 
             try {
 
-                $sql = "SELECT * FROM `games` WHERE categoria='$categoria' ORDER BY nome";
+                $sql = "SELECT * FROM `games` WHERE categoria='$categoria' ORDER BY nome_game";
                 $statement = $pdo->query($sql);
 
                 while($row = $statement->fetch(PDO::FETCH_ASSOC)) {

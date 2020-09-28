@@ -16,23 +16,10 @@
         } else {
             $usuario = new Usuario();
             $usuario = unserialize($_SESSION['usuario']);
-            $jogos[] = new Game();
-            $jogos = unserialize($_SESSION['lista']);
             $controller = new CompraController();
             $compras = $controller->listarTodas($usuario->id);
             $jogosObtidos[] = new Game();
 
-            // for($i = 0; $i < count($jogos) - 1; $i++) {
-            //     for ($j=0; $j < count($compras) - 1; $j++) { 
-            //         if($jogos[$i]->id == $compras[$j]->id_game && $jogos[$i]->id != null) {
-            //             array_push($jogosObtidos, $jogos[$i]);
-
-            //         }
-            //         if(count($jogosObtidos) == count($compras) - 1){
-            //             break;
-            //         }
-            //     }
-            // }
             $jogosObtidos = $controller->listarGamesComprados($usuario->id);
         }
     ?>
@@ -66,9 +53,10 @@
                 </div>
             <?php else: ?>
             <?php
+                $count = 0; // para evitar que os valores n dupliquem
+                for($i = 0; $i < count($compras); $i++): //como nao da pra rodar dois foreach ao mesmo tempo, utilizei o for normal e o incremento a cada vez q ele ler um jogo obtido
                 foreach ($jogosObtidos as $game):
-                    foreach($compras as $compra):
-                    if(!$game->id == null && $compra->id != null):
+                    if($game->id != null && $compras[$i]->id != null && $count != count($compras) - 1):
             ?>
                 <div class="card" style="width: 18rem; margin: 25px;">
                     <div class="card-body">
@@ -76,17 +64,19 @@
                         <h6 class="card-subtitle mb-2 text-muted"><?php echo ucfirst($game->categoria) . "   /   $game->plataforma"; ?></h6>
                         <h6 class="card-subtitle mb-2 text-muted">
                             <?php 
-                                echo "Data da compra: ".$compra->data_compra;
+                                echo "Data da compra: ". $compras[$i]->data_compra;
+                                $i++;
                             ?>
                         </h6>
                         <p class="card-text" style=""><?php echo $game->descricao; ?></p>
 
                     </div>
                 </div>
-            <?php 
+            <?php
+                $count++; 
                 endif;
-                endforeach;
                 endforeach; 
+                endfor;
                 endif;
             ?>
         </div>

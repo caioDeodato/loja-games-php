@@ -88,9 +88,7 @@
         <div class="lista" style="display: flex; flex-wrap: wrap; justify-content: center;">
             <?php 
                 $lista = $controller->listarTodos();
-                if(!isset($_SESSION['lista'])){
-                    $_SESSION['lista'] = serialize($lista);
-                }
+               
                 foreach ($lista as $game):
                     if(!$game->id == null):
             ?>
