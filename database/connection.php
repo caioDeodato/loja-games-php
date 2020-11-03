@@ -6,12 +6,12 @@
 
         public function __construct()
         {
-            $db_host = "localhost";
-            $db_name = "bdProjeto1";
-            $db_port = '3306';
-            $db_usuario = "root";
+            $db_host = "";
+            $db_name = "";
+            $db_port = '';
+            $db_usuario = "";
             $db_senha = "";
-            $db_driver = "mysql";
+            $db_driver = "";
 
             try {
                 self::$pdo = new PDO("$db_driver:host=$db_host; port=$db_port; dbname=$db_name", $db_usuario, $db_senha);
